@@ -1,0 +1,265 @@
+<header>
+  <div class="logo">
+    <img src="../../public/imgs/logo.png" alt="Logo de therollerhouse" />
+  </div>
+
+  <div class="bars__menu">
+    <span class="line1__bars-menu"></span>
+    <span class="line2__bars-menu"></span>
+    <span class="line3__bars-menu"></span>
+  </div>
+
+  <nav id="nav">
+    <ul>
+      <li class="li"><a href="#inicio">INICIO</a></li>
+      <li class="li"><a href="#proyectos">PRODUCTOS</a></li>
+      <li class="li">
+        <a href="#habilidades">NUESTROS <br class="br" /> TRABAJOS</a>
+      </li>
+      <li class="li"><a href="#habilidades">CONTACTO</a></li>
+    </ul>
+
+    <ul>
+      <li>
+        <a
+          href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=GTvVlcSGKnRBxlHSDcSlqbkMPrRrsvkXHZMzzDctZdLSsmCvKZbHGwcFlPGDplxkNQGtggkSqXhxM"
+          target="_blank"><i class="bi bi-envelope"></i></a
+        >
+      </li>
+      <li><a href="" target="_blank"><i class="bi bi-facebook"></i></a></li>
+      <li><a href="" target="_blank"><i class="bi bi-instagram"></i></a></li>
+      <li><a href="" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      z-index: -1; /* Fondo detrás del contenido */
+      animation: blur linear both;
+      animation-timeline: scroll();
+      animation-range: 0 400px;
+    }
+
+    .logo {
+      img {
+        height: 78px;
+        width: 172px;
+      }
+      transition: 0.3s transform;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    nav {
+      transform: translateX(100%);
+      transition: 0.3s ease transform;
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      left: 30%;
+      background-color: var(--clr-primary-light);
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        li {
+          color: var(--clr-white);
+        }
+
+        &:first-child {
+          color: var(--clr-primary);
+          li {
+            font-size: 1.4rem;
+            font-weight: 600;
+          }
+        }
+
+        &:nth-child(2) {
+          flex-direction: row;
+          align-items: center;
+
+          li {
+            font-size: 1.5rem;
+          }
+
+          .bi-linkedin {
+            color: #0a66c2;
+            transition: 0.2s ease color;
+            &:hover {
+              color: #0a5aa9;
+            }
+          }
+        }
+      }
+    }
+
+    .bars__menu {
+      width: 30px;
+      height: 30px;
+      transform: scale(0.8);
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .animate-bars {
+      transform: translateX(0);
+    }
+
+    .disabled {
+      display: flex;
+    }
+
+    .bars__menu span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--clr-primary);
+      margin-top: 6px;
+      transform-origin: 0px 100%;
+      transition: all 300ms;
+    }
+
+    .activeline1__bars-menu {
+      transform: rotate(45deg) translate(-2px, 1px);
+    }
+
+    .activeline2__bars-menu {
+      opacity: 0;
+      margin-left: -30px;
+    }
+
+    .activeline3__bars-menu {
+      transform: rotate(-45deg) translate(-4px, 2px);
+    }
+  }
+
+  @media screen and (width > 750px) {
+    header {
+      padding-inline: 2rem;
+
+      .bars__menu {
+        display: none;
+      }
+
+      nav {
+        padding-right: 2rem;
+        transform: none;
+        position: initial;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        background-color: transparent;
+        -webkit-animation: fade-in-fwd 2s both;
+        animation: fade-in-fwd 2s both;
+
+        ul {
+          display: flex;
+          flex-direction: row;
+
+          &:first-child {
+            li {
+              font-size: 1rem;
+              a {
+                transition: 0.3s ease color;
+              }
+              :hover {
+                color: var(--clr-primary);
+                transition: 0.3s ease color;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+
+      .br {
+        display: none;
+      }
+    }
+  }
+
+  @keyframes blur {
+    to {
+      backdrop-filter: blur(10px);
+      background-color: #20202061;
+      box-shadow: 0 4px 8px #ffffff1a;
+    }
+  }
+</style>
+
+<script>
+  const bars = document.querySelector(".bars__menu");
+  const nav = document.getElementById("nav");
+  const line1__bars = document.querySelector(
+    ".line1__bars-menu"
+  ) as HTMLElement;
+  const line2__bars = document.querySelector(
+    ".line2__bars-menu"
+  ) as HTMLElement;
+  const line3__bars = document.querySelector(
+    ".line3__bars-menu"
+  ) as HTMLElement;
+  const lis = document.querySelectorAll(".li");
+
+  bars.addEventListener("click", () => {
+    animateBars();
+    nav.classList.toggle("animate-bars");
+    nav.classList.toggle("disabled");
+
+    if (nav.classList.contains("animate-bars")) {
+      line1__bars.style.backgroundColor = "var(--clr-white)";
+      line2__bars.style.backgroundColor = "var(--clr-white)";
+      line3__bars.style.backgroundColor = "var(--clr-white)";
+    } else {
+      line1__bars.style.backgroundColor = "var(--clr-primary)";
+      line2__bars.style.backgroundColor = "var(--clr-primary)";
+      line3__bars.style.backgroundColor = "var(--clr-primary)";
+    }
+  });
+
+  lis.forEach((li) => {
+    li.addEventListener("click", () => {
+      animateBars();
+      nav.classList.toggle("animate-bars");
+      nav.classList.toggle("disabled");
+    });
+  });
+
+  function animateBars() {
+    line1__bars.classList.toggle("activeline1__bars-menu");
+    line2__bars.classList.toggle("activeline2__bars-menu");
+    line3__bars.classList.toggle("activeline3__bars-menu");
+  }
+</script>
