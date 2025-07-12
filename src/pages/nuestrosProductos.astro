@@ -1,0 +1,126 @@
+---
+import CardProducto from "../components/cardProducto.astro"
+const arr = [
+    "Cortina Roller Blackout",
+    "Cortina Roller Sunscreen",
+    "Cortina Roller Sistema doble",
+    "Cortina Roller Romana",
+    "Cortina Roller Motorizada",
+    "Cortina Roller Para oficina",
+]
+---
+
+<section>
+    <h2>Nuestros productos</h2>
+
+    <button class="left" id="leftBtn"><i class="bi bi-chevron-left"></i></button>
+    <div class="carrousel" id="carrousel">
+        {
+            arr.map(card => {
+                return (
+                    <CardProducto title={card}/>
+                )
+            })
+        }
+    </div>
+    <button class="right" id="rightBtn"><i class="bi bi-chevron-right"></i></button>
+</section>
+
+<style>
+    section {
+        background-color: var(--clr-white);
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        
+        @media screen and (width > 750px) {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: var(--clr-black);
+            font-size: 1.8rem;
+
+            @media screen and (width > 750px) {
+                font-size: 2.3rem;
+            }
+        }
+
+        div {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            overflow: scroll;
+
+            @media screen and (width > 750px) {
+                transition: transform 0.5s ease;
+                overflow: hidden;
+            }
+        }
+
+        .left,.right {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--clr-secondary);
+            background-color: var(--clr-primary);
+            border: none;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            z-index: 1;
+            cursor: pointer;
+            transition: background-color .3s ease;
+
+            &:hover {
+                background-color: var(--clr-primary-hover);
+            }
+
+            @media screen and (width > 750px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            i {
+                font-size: 1.2rem;
+            }
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
+    }
+</style>
+
+<script>
+    if (typeof window !== "undefined") {
+        const carrousel = document.getElementById('carrousel');
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+
+        function scrollCarrousel(direction) {
+            if (!carrousel) return;
+            // Busca el primer hijo que sea CardProducto (astro-island)
+            const card = carrousel.querySelector('.card-producto, astro-island');
+            const cardWidth = card ? card.offsetWidth + 16 : 300; // 16px gap
+            carrousel.scrollBy({
+                left: direction * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        if (leftBtn && rightBtn) {
+            leftBtn.onclick = () => scrollCarrousel(-1);
+            rightBtn.onclick = () => scrollCarrousel(1);
+        }
+    }
+</script>

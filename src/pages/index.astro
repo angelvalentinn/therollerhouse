@@ -2,6 +2,8 @@
 import Header from './header.astro';
 import Hero from './hero.astro';
 import CaracteristicasDestacadas from './caracteristicas.astro';
+import NuestrosProductos from './nuestrosProductos.astro';
+import SobreNosotros from './sobreNosotros.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -11,7 +13,15 @@ import Layout from '../layouts/Layout.astro';
 		<Hero />
 	</div>
 	<CaracteristicasDestacadas />
-	<div>
-		
+	<div class="a">
+		<NuestrosProductos />
+		<SobreNosotros />
 	</div>
 </Layout>
+
+<style>
+	.a {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+</style>
