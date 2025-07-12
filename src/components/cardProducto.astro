@@ -1,11 +1,11 @@
 ---
-const {title} = Astro.props
+const {id, title} = Astro.props
 ---
 
 <article class="card-producto">
     <div>
         <p>{title}</p>
-        <button>Ver detalle</button>
+        <a href=`/detailProduct/${id}`>Ver detalle</a>
     </div>
 </article>
 
@@ -43,9 +43,10 @@ const {title} = Astro.props
                 font-size: 1.4rem;
             }
 
-            button {
+            a {
                 background-color: var(--clr-primary);
                 border: none;
+                text-align: center;
                 padding: .5rem 0;
                 border-radius: 22px;
                 font-weight: 500;
