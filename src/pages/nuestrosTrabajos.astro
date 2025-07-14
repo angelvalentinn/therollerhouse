@@ -1,0 +1,208 @@
+---
+import { TRABAJOS } from "../scripts/trabajos.js";
+import ArrowLeft from "../components/arrowLeft.svg";
+import ArrowRight from "../components/arrowRight.svg";
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
+---
+
+<section>
+
+  <div class="content">
+    
+    <h2>Nuestros trabajos</h2>
+
+    <button class="left" id="leftBtnTrabajos"><ArrowLeft></button>
+    
+    <div class="carrouselTrabajos pswp-gallery" id="my-gallery">
+      {
+        TRABAJOS.map((t) => {
+            return  (
+            <a
+            href={t}
+            target="_blank"
+            data-pswp-width="4000"
+            data-pswp-height="2500"
+            >
+            <img
+            loading="lazy"
+                class="trabajo-img"
+                src={t}
+                alt=""
+            />
+            </a>
+            )
+        })
+      }
+    </div>
+
+    <button class="right" id="rightBtnTrabajos"
+      ><ArrowRight></ArrowRight></button
+    >
+  </div>
+</section>
+
+<style>
+  section {
+    overflow: hidden;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    background-image:
+    linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url(/public/imgs/bgDetail.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    backdrop-filter: blur(1px);
+    
+    ::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        backdrop-filter: blur(1.5px);
+        pointer-events: none;
+    }
+
+    .content {
+        		max-width: 1200px;
+		margin: 0 auto;
+        
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow: hidden;
+      position: relative;
+
+      @media screen and (width > 750px) {
+        padding: 1rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+
+        @media screen and (width > 750px) {
+            font-size: 2.3rem;
+        }
+      }
+
+      .carrouselTrabajos {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: nowrap;
+        overflow: scroll;
+
+        @media screen and (width > 750px) {
+            gap: 1rem;
+            overflow: visible;
+            transition: transform 0.5s ease;
+        }
+
+        img {
+          flex: 1 0 auto;
+          border: 2px solid var(--clr-primary);
+        height: 280px;   width: 250px;
+          border-radius: 12px;
+          object-fit: cover;
+        }
+      }
+
+      button {
+        display: none;
+        position: absolute;
+        top: 50%;
+        color: var(--clr-secondary);
+        background-color: var(--clr-primary);
+        border: none;
+        border-radius: 50%;
+        
+        height: 40px;
+        width: 40px;
+        z-index: 1;
+        cursor: pointer;
+        transition: background-color .3s ease;
+        &:hover {
+            background-color: var(--clr-primary-hover);
+        }
+        svg {
+            display: block;
+            height: 20px;
+            width:  20px;
+            color: var(--clr-white);
+        }
+        @media screen and (width > 750px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+        }
+      }
+
+      .left {
+        left: 0;
+      }
+      .right {
+        
+        right: 0;
+      }
+    }
+
+  }
+</style>
+
+<script>
+              import PhotoSwipeLightbox from 'photoswipe/lightbox';
+    import 'photoswipe/style.css';
+    document.addEventListener('astro:page-load', () => {    
+        if (typeof window !== "undefined") {
+            const carrousel = document.getElementById('my-gallery');
+            const leftBtn = document.getElementById('leftBtnTrabajos');
+            const rightBtn = document.getElementById('rightBtnTrabajos');
+            let currentIndex = 0;
+
+            function getCardWidth() {
+                const card = carrousel.querySelector('.trabajo-img');
+                return card ? card.offsetWidth + 16 : 300; // 16px gap
+            }
+
+            function updateTransform() {
+                const cardWidth = getCardWidth();
+                carrousel.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            }
+
+            function scrollCarrousel(direction) {
+                if (!carrousel) return;
+                const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
+                const maxIndex = totalCards - 1;
+                currentIndex += direction * 2;
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex - 3) currentIndex = maxIndex - 3;
+                updateTransform();
+            }
+
+            if (leftBtn && rightBtn) {
+                leftBtn.onclick = () => scrollCarrousel(-1);
+                rightBtn.onclick = () => scrollCarrousel(1);
+            }
+
+            // Actualiza el transform si cambia el tamaño de la ventana
+            window.addEventListener('resize', updateTransform);
+        }
+
+    const lightbox = new PhotoSwipeLightbox({
+    gallery: '#my-gallery',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+    });
+
+    lightbox.init();
+    });
+
+
+</script>

@@ -7,7 +7,9 @@ import { PRODUCTOS } from "../scripts/productos.js";
     <h2>Nuestros productos</h2>
 
     <button class="left" id="leftBtn"><i class="bi bi-chevron-left"></i></button>
+
     <div class="carrousel" id="carrousel">
+        
         {
             PRODUCTOS.map(product => {
                 return (
@@ -50,7 +52,7 @@ import { PRODUCTOS } from "../scripts/productos.js";
 
             @media screen and (width > 750px) {
                 transition: transform 0.5s ease;
-                overflow: hidden;
+                overflow: visible;
             }
         }
 
@@ -58,7 +60,7 @@ import { PRODUCTOS } from "../scripts/productos.js";
             display: none;
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            
             color: var(--clr-secondary);
             background-color: var(--clr-primary);
             border: none;
@@ -95,25 +97,40 @@ import { PRODUCTOS } from "../scripts/productos.js";
 </style>
 
 <script>
-    if (typeof window !== "undefined") {
-        const carrousel = document.getElementById('carrousel');
-        const leftBtn = document.getElementById('leftBtn');
-        const rightBtn = document.getElementById('rightBtn');
+    document.addEventListener('astro:page-load', () => {
+        if (typeof window !== "undefined") {
+            const carrousel = document.getElementById('carrousel');
+            const leftBtn = document.getElementById('leftBtn');
+            const rightBtn = document.getElementById('rightBtn');
+            let currentIndex = 0;
 
-        function scrollCarrousel(direction) {
-            if (!carrousel) return;
-            // Busca el primer hijo que sea CardProducto (astro-island)
-            const card = carrousel.querySelector('.card-producto, astro-island');
-            const cardWidth = card ? card.offsetWidth + 16 : 300; // 16px gap
-            carrousel.scrollBy({
-                left: direction * cardWidth,
-                behavior: 'smooth'
-            });
-        }
+            function getCardWidth() {
+                const card = carrousel.querySelector('.card-producto');
+                return card ? card.offsetWidth + 16 : 300; // 16px gap
+            }
 
-        if (leftBtn && rightBtn) {
-            leftBtn.onclick = () => scrollCarrousel(-1);
-            rightBtn.onclick = () => scrollCarrousel(1);
+            function updateTransform() {
+                const cardWidth = getCardWidth();
+                carrousel.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            }
+
+            function scrollCarrousel(direction) {
+                if (!carrousel) return;
+                const totalCards = carrousel.querySelectorAll('.card-producto').length;
+                const maxIndex = totalCards - 1;
+                currentIndex += direction * 2;
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex - 3) currentIndex = maxIndex - 3;
+                updateTransform();
+            }
+
+            if (leftBtn && rightBtn) {
+                leftBtn.onclick = () => scrollCarrousel(-1);
+                rightBtn.onclick = () => scrollCarrousel(1);
+            }
+
+            // Actualiza el transform si cambia el tamaño de la ventana
+            window.addEventListener('resize', updateTransform);
         }
-    }
+    });
 </script>
