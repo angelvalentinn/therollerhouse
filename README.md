@@ -1,4 +1,5 @@
 # Astro Starter Kit: Basics
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c25a72e-15e6-4c12-8fb5-fe51b32eb07b/deploy-status)](https://app.netlify.com/projects/therollerhouse/deploys)
 
 ```sh
 npm create astro@latest -- --template basics
