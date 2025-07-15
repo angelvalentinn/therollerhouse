@@ -3,38 +3,19 @@ import { TRABAJOS } from "../scripts/trabajos.js";
 import ArrowLeft from "../components/arrowLeft.svg";
 import ArrowRight from "../components/arrowRight.svg";
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import CarrouselTrabajos from "../components/carrouselTrabajos.astro";
 
 ---
 
-<section>
+<section id="trabajos">
 
   <div class="content">
     
     <h2>Nuestros trabajos</h2>
 
-    <button class="left" id="leftBtnTrabajos"><ArrowLeft></button>
+    <button class="left" id="leftBtnTrabajos"><ArrowLeft ></button>
     
-    <div class="carrouselTrabajos pswp-gallery" id="my-gallery">
-      {
-        TRABAJOS.map((t) => {
-            return  (
-            <a
-            href={t}
-            target="_blank"
-            data-pswp-width="4000"
-            data-pswp-height="2500"
-            >
-            <img
-              loading="lazy"
-                class="trabajo-img"
-                src={t}
-                alt=""
-            />
-            </a>
-            )
-        })
-      }
-    </div>
+      <CarrouselTrabajos client:visible/>
 
     <button class="right" id="rightBtnTrabajos"
       ><ArrowRight></ArrowRight></button
@@ -53,7 +34,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
         rgba(0, 0, 0, 0.3),
         rgba(0, 0, 0, 0.3)
       ),
-      url(/public/imgs/bgDetail.jpg);
+      url(/public/imgs/bgDetail.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -155,54 +136,3 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
   }
 </style>
-
-<script>
-              import PhotoSwipeLightbox from 'photoswipe/lightbox';
-    import 'photoswipe/style.css';
-    document.addEventListener('astro:page-load', () => {    
-        if (typeof window !== "undefined") {
-            const carrousel = document.getElementById('my-gallery');
-            const leftBtn = document.getElementById('leftBtnTrabajos');
-            const rightBtn = document.getElementById('rightBtnTrabajos');
-            let currentIndex = 0;
-
-            function getCardWidth() {
-                const card = carrousel.querySelector('.trabajo-img');
-                return card ? card.offsetWidth + 16 : 300; // 16px gap
-            }
-
-            function updateTransform() {
-                const cardWidth = getCardWidth();
-                carrousel.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
-            }
-
-            function scrollCarrousel(direction) {
-                if (!carrousel) return;
-                const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
-                const maxIndex = totalCards - 1;
-                currentIndex += direction * 2;
-                if (currentIndex < 0) currentIndex = 0;
-                if (currentIndex > maxIndex - 3) currentIndex = maxIndex - 3;
-                updateTransform();
-            }
-
-            if (leftBtn && rightBtn) {
-                leftBtn.onclick = () => scrollCarrousel(-1);
-                rightBtn.onclick = () => scrollCarrousel(1);
-            }
-
-            // Actualiza el transform si cambia el tamaño de la ventana
-            window.addEventListener('resize', updateTransform);
-        }
-
-    const lightbox = new PhotoSwipeLightbox({
-    gallery: '#my-gallery',
-    children: 'a',
-    pswpModule: () => import('photoswipe'),
-    });
-
-    lightbox.init();
-    });
-
-
-</script>

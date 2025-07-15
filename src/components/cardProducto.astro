@@ -2,7 +2,7 @@
 const {id, title} = Astro.props
 ---
 
-<article class="card-producto">
+<article class="card-producto" transition:name={`animation-img-${id}`}>
     <div>
         <p>{title}</p>
         <a href=`/detailProduct/${id}`>Ver detalle</a>
@@ -16,7 +16,7 @@ const {id, title} = Astro.props
         width: 250px;
         padding: 1rem;
         background-image: linear-gradient(to top, rgba(0, 0, 0, 0.689), rgba(0, 0, 0, 0)),
-        url(/public/imgs/ex.jpg);
+        url(/public/imgs/ex.webp);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

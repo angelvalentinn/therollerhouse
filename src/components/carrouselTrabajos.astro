@@ -1,0 +1,75 @@
+---
+import { TRABAJOS } from "../scripts/trabajos.js";
+---
+
+<div class="carrouselTrabajos gallery" id="gallery">
+    
+  {
+    TRABAJOS.map((t) => {
+      return (
+        <a href={t} data-caption="Image caption">
+          <img loading="lazy" decoding="async" class="trabajo-img" src={t} alt="" />
+        </a>
+
+       
+      )
+    })
+  }
+</div>
+
+<script>
+
+    document.addEventListener('astro:page-load', () => {    
+
+        if (typeof window !== "undefined") {
+            const carrousel = document.getElementById('gallery');
+            const leftBtn = document.getElementById('leftBtnTrabajos');
+            const rightBtn = document.getElementById('rightBtnTrabajos');
+            let currentIndex = 0;
+
+            function getCardWidth() {
+                const card = carrousel.querySelector('.trabajo-img');
+                return card ? card.offsetWidth + 16 : 300; // 16px gap
+            }
+
+            function updateTransform() {
+                const cardWidth = getCardWidth();
+                carrousel.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            }
+
+            function scrollCarrousel(direction) {
+                if (!carrousel) return;
+                const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
+                const maxIndex = totalCards - 1;
+                currentIndex += direction * 2;
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex - 3) currentIndex = maxIndex - 3;
+                updateTransform();
+            }
+
+            if (leftBtn && rightBtn) {
+                leftBtn.onclick = () => scrollCarrousel(-1);
+                rightBtn.onclick = () => scrollCarrousel(1);
+            }
+
+            // Actualiza el transform si cambia el tamaño de la ventana
+            window.addEventListener('resize', updateTransform);
+        }
+
+    });
+
+</script>
+<script>
+    import baguetteBox from 'baguettebox.js';
+    import 'baguettebox.js/dist/baguetteBox.min.css';
+    document.addEventListener('astro:page-load', function() {
+
+      
+        baguetteBox.run('.gallery', {
+            captions: false,
+            async: true,
+            preload: 0,
+        });
+        
+    });
+</script>

@@ -1,7 +1,7 @@
 <header>
-  <div class="logo">
+  <a href="/" class="logo">
     <img src="/imgs/logo.png" alt="Logo de therollerhouse" />
-  </div>
+  </a>
 
   <div class="bars__menu">
     <span class="line1__bars-menu"></span>
@@ -11,12 +11,12 @@
 
   <nav id="nav">
     <ul>
-      <li class="li"><a href="#inicio">INICIO</a></li>
-      <li class="li"><a href="#proyectos">PRODUCTOS</a></li>
+      <li class="li"><a href="#inicio">Inicio</a></li>
+      <li class="li"><a href="#nuestrosProductos">Productos</a></li>
       <li class="li">
-        <a href="#habilidades">NUESTROS <br class="br" /> TRABAJOS</a>
+        <a href="#trabajos">Nuestros <br class="br" /> trabajos</a>
       </li>
-      <li class="li"><a href="#habilidades">CONTACTO</a></li>
+      <li class="li"><a href="#contacto">Contacto</a></li>
     </ul>
 
     <ul>
@@ -57,7 +57,7 @@
       z-index: -1; /* Fondo detrás del contenido */
       animation: blur linear both;
       animation-timeline: scroll();
-      animation-range: 0 400px;
+      animation-range: 0 500px;
     }
 
     .logo {
@@ -125,6 +125,7 @@
     .bars__menu {
       width: 30px;
       height: 30px;
+      margin-right: 10px;
       transform: scale(0.8);
       cursor: pointer;
       z-index: 10;
@@ -188,6 +189,7 @@
           &:first-child {
             li {
               font-size: 1rem;
+              text-transform:capitalize;
               a {
                 transition: 0.3s ease color;
               }

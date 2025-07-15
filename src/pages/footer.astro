@@ -1,4 +1,4 @@
-<footer>
+<footer id="contacto">
     <section>
         <h3>Datos de contacto</h3>
         <article>
@@ -21,23 +21,46 @@
         section {
             display: flex;
             flex-direction: column;
-            gap: .2rem;
+            gap: .6rem;
 
             h3 {
                 color: var(--clr-white);
                 font-weight: 600;
+
+                @media screen and (width >750px) {
+                    font-size: 1.4rem;
+                }
             }
 
             article {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+
+                @media screen and (width >750px) {
+                    align-items: center;
+                    gap: .3rem;
+
+                    div {
+                        i {
+                            font-size: 1.2rem;}
+                         p {font-size: 1rem;}
+                    }
+                }
                 div {
                     display: flex;  
                     gap: 0.5rem;
                     align-items: center;
                     justify-content: center;
+
+    
                 }
+            }
+
+            @media screen and (width >750px) {
+                align-items: center;
+                
+                justify-content: center;
             }
 
         }
