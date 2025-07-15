@@ -74,4 +74,17 @@ import { ClientRouter } from 'astro:transitions';
 		color: var(--clr-white);
 	}
 
+#baguetteBox-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  display: none;
+}
+#baguetteBox-overlay.active {
+  display: block;
+}
+
 </style>
