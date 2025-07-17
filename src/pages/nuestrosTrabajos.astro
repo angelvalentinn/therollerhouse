@@ -51,20 +51,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    backdrop-filter: blur(1px);
-    
-    ::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        backdrop-filter: blur(1.5px);
-        pointer-events: none;
-    }
 
     .content {
-        		max-width: 1200px;
-		margin: 0 auto;
+        max-width: 1200px;
+		    margin: 0 auto;
         
       display: flex;
       flex-direction: column;
@@ -147,6 +137,12 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
     }
 
   }
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
+
 </style>
 
 <script>
