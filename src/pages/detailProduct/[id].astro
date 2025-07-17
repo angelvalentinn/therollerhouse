@@ -23,6 +23,7 @@ const product = PRODUCTOS.find(product => product.id == id)
 
 <Layout>
     <section>
+    
         <a href="/#nuestrosProductos" class="back"><i class="bi bi-arrow-left"></i></a>
         <h2>{product.title}</h2>
         <div>
@@ -35,7 +36,8 @@ const product = PRODUCTOS.find(product => product.id == id)
                 return <p>{parr}</p>;
             })
         }</article>
-        <a href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)}` target="_blank" class="btn">Solicitar cotización</a>
+        <a href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar presupuesto.")}` target="_blank" class="btn">Solicitar cotización</a>
+        
     </section>
 </Layout>
 
@@ -46,7 +48,6 @@ const product = PRODUCTOS.find(product => product.id == id)
         padding-inline: 1rem;
         display: flex;
         flex-direction: column;
-        align-items: left;
         gap: 1rem;
             background-image: linear-gradient(
         0deg,
@@ -73,10 +74,11 @@ const product = PRODUCTOS.find(product => product.id == id)
             gap: 1rem;
             flex-wrap: nowrap;
             overflow: scroll;
+
             img {
                 border-radius: 22px;
                 flex: 1 0 auto;
-                width: 250px;
+                            width: 250px;
                 height: 230px;
                 border: 2px solid var(--clr-primary);
                 object-fit: cover;
@@ -113,15 +115,16 @@ const product = PRODUCTOS.find(product => product.id == id)
 
     @media screen and (width > 750px) {
         section {
+            
             display: grid;
             padding-inline: 2rem;
             grid-template-areas:
             "back back"
-            "title title"
+            "title ."
             "div description"
             "div button";
             grid-template-rows: repeat(4, max-content);
-            grid-template-columns: max-content 1fr;
+            grid-template-columns: 1fr 1fr;
 
             .back {
                 grid-area: back;
@@ -136,6 +139,9 @@ const product = PRODUCTOS.find(product => product.id == id)
             h2 {
                 grid-area: title;
                 font-size: 2.3rem;
+                padding-right: 20px;
+                justify-self: end;
+
             }
 
             div {
@@ -143,11 +149,15 @@ const product = PRODUCTOS.find(product => product.id == id)
                 width: 400px;
                 height: 300px;
                 overflow: hidden;
-                
+                justify-self: end;
+                align-self: start;
+
                 img {
                     height: 100%;
                     width: 100%;
                 }
+
+
             }
 
             .btn {
@@ -170,6 +180,9 @@ const product = PRODUCTOS.find(product => product.id == id)
             padding-inline: 5rem;
         }
 
+           
+
     }
+
 
 </style>

@@ -20,7 +20,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
     TRABAJOS.map((t) => {
       return (
         <a href={t} data-caption="Image caption">
-          <img loading="lazy" decoding="async" class="trabajo-img" src={t} alt="" />
+          <img loading="lazy" decoding="async" class="trabajo-img" src={t} alt="Imagen mostrando nuestros trabajos.." />
         </a>
 
        
@@ -43,8 +43,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
     background-image:
     linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
       ),
       url(/public/imgs/bgDetail.webp);
     background-size: cover;
@@ -83,13 +83,27 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
         @media screen and (width > 750px) {
             gap: 1rem;
             overflow: visible;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-rows: repeat(2, max-content); /* Dos filas */
+            grid-auto-columns: max-content; 
             transition: transform 0.5s ease;
         }
 
         img {
           flex: 1 0 auto;
           border: 2px solid var(--clr-primary);
-        height: 280px;   width: 250px;
+          height: 280px;   width: 250px;
+          @media screen and (width > 750px) {
+            width: 230px;
+            height: 230px;
+              filter: brightness(0.9);
+              transition: filter 0.3s ease;
+
+            &:hover {
+              filter: brightness(1);
+            }
+          }
           border-radius: 12px;
           object-fit: cover;
         }

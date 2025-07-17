@@ -1,57 +1,66 @@
 ---
-const {id, title} = Astro.props
+const { id, title } = Astro.props;
 ---
 
 <article class="card-producto" transition:name={`animation-img-${id}`}>
-    <div>
-        <p>{title}</p>
-        <a href=`/detailProduct/${id}`>Ver detalle</a>
-    </div>
+  <div>
+    <p>{title}</p>
+    <a href=`/detailProduct/${id}`>Ver detalle</a>
+  </div>
 </article>
 
 <style>
-    article {
-        flex: 1 0 auto;
-        height: 280px;
-        width: 250px;
-        padding: 1rem;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.689), rgba(0, 0, 0, 0)),
-        url(/public/imgs/ex.webp);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: flex;
-        border-radius: 22px;
-        align-items: flex-end;
-        overflow: hidden;
-        scrollbar-width: none;      /* Firefox */
-        -ms-overflow-style: none;   /* IE 10+ */
+  article {
+    flex: 1 0 auto;
+    height: 280px;
+    width: 250px;
+    padding: 1rem;
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.689),
+        rgba(0, 0, 0, 0)
+      ),
+      url(/public/imgs/ex.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    border-radius: 22px;
+    align-items: flex-end;
+    overflow: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+              transition: filter 0.3s ease;
 
-        ::-webkit-scrollbar { /* Chrome, Safari */
-            display: none;
-        }
-
-        div {
-            display: flex;
-            flex-direction: column;
-            gap: .8rem;
-
-            p {
-                font-weight: 600;
-                line-height: 1.1;
-                flex-wrap: pretty;
-                font-size: 1.4rem;
+            &:hover {
+              filter: brightness(1.06);
             }
-
-            a {
-                background-color: var(--clr-primary);
-                border: none;
-                text-align: center;
-                padding: .5rem 0;
-                border-radius: 22px;
-                font-weight: 500;
-                font-size: 1rem;
-            }
-        }
+    ::-webkit-scrollbar {
+      /* Chrome, Safari */
+      display: none;
     }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+
+      p {
+        font-weight: 600;
+        line-height: 1.1;
+        flex-wrap: pretty;
+        font-size: 1.4rem;
+      }
+
+      a {
+        background-color: var(--clr-primary);
+        border: none;
+        text-align: center;
+        padding: 0.5rem 0;
+        border-radius: 22px;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+    }
+  }
 </style>

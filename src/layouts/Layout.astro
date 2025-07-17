@@ -15,9 +15,31 @@ import { ClientRouter } from 'astro:transitions';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-		<link rel="icon" type="image" href="/public/imgs/logo.png" />
+		<!-- Primary Meta Tags -->
+		<title>The Roller House</title>
+		<meta name="title" content="The Roller House | Cortinas y Toldos a medida" />
+		<meta name="description" content="Venta e instalación de cortinas y toldos a medida. Protección solar, privacidad y elegancia para tu hogar o negocio. ¡Instalación rápida y profesional! | Zona CABA y GBA" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://therollerhouse.netlify.app" />
+		<meta property="og:title" content="The Roller House | Cortinas y Toldos a medida" />
+		<meta property="og:description" content="Venta e instalación de cortinas y toldos a medida. Protección solar, privacidad y elegancia para tu hogar o negocio. ¡Instalación rápida y profesional! | Zona CABA y GBA" />
+		<meta property="og:image" content="/imgs/logo2.png" />
+
+		<!-- X (Twitter) -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://therollerhouse.netlify.app" />
+		<meta property="twitter:title" content="The Roller House | Cortinas y Toldos a medida" />
+		<meta property="twitter:description" content="Venta e instalación de cortinas y toldos a medida. Protección solar, privacidad y elegancia para tu hogar o negocio. ¡Instalación rápida y profesional! | Zona CABA y GBA" />
+		<meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+		<!-- Meta Tags Generated with https://metatags.io -->
+
+		<link rel="icon" type="image" href="/imgs/logo2.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>The roller house</title>
+
+		<title>The Roller House | Cortinas y Toldos</title>
 		<ClientRouter/>
 	</head>
 	<body>
@@ -88,3 +110,18 @@ import { ClientRouter } from 'astro:transitions';
 }
 
 </style>
+
+<script>
+	// Initialize Lenis
+import Lenis from 'lenis'
+
+const lenis = new Lenis({
+  autoRaf: true,
+});
+
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+  
+});
+
+</script>

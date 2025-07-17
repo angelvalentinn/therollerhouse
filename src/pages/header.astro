@@ -1,6 +1,6 @@
 <header>
   <a href="/" class="logo">
-    <img src="/imgs/logo.png" alt="Logo de therollerhouse" />
+    <img src="/imgs/logo.png" alt="Logo de The Roller House" />
   </a>
 
   <div class="bars__menu">
@@ -11,10 +11,10 @@
 
   <nav id="nav">
     <ul>
-      <li class="li"><a href="#inicio">Inicio</a></li>
-      <li class="li"><a href="#nuestrosProductos">Productos</a></li>
+      <li class="li"><a href="/#inicio">Inicio</a></li>
+      <li class="li"><a href="/#nuestrosProductos">Productos</a></li>
       <li class="li">
-        <a href="#trabajos">Nuestros <br class="br" /> trabajos</a>
+        <a href="/#trabajos">Nuestros <br class="br" /> trabajos</a>
       </li>
       <li class="li"><a href="#contacto">Contacto</a></li>
     </ul>
@@ -26,9 +26,8 @@
           target="_blank"><i class="bi bi-envelope"></i></a
         >
       </li>
-      <li><a href="" target="_blank"><i class="bi bi-facebook"></i></a></li>
-      <li><a href="" target="_blank"><i class="bi bi-instagram"></i></a></li>
-      <li><a href="" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+      <li><a href="https://www.instagram.com/therollerhouse.ok/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+      <li><a href=`https://wa.me/1161439675?text=${encodeURIComponent("")}` target="_blank"><i class="bi bi-whatsapp"></i></a></li>
     </ul>
   </nav>
 </header>
@@ -52,7 +51,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height:80px;
       background: inherit;
       z-index: -1; /* Fondo detrás del contenido */
       animation: blur linear both;
@@ -62,8 +61,8 @@
 
     .logo {
       img {
-        height: 78px;
-        width: 172px;
+        height: 68px;
+        width: 152px;
       }
       transition: 0.3s transform;
       cursor: pointer;
@@ -258,6 +257,16 @@
         animateBars();
         nav.classList.toggle("animate-bars");
         nav.classList.toggle("disabled");
+
+              if (nav.classList.contains("animate-bars")) {
+        line1__bars.style.backgroundColor = "var(--clr-white)";
+        line2__bars.style.backgroundColor = "var(--clr-white)";
+        line3__bars.style.backgroundColor = "var(--clr-white)";
+      } else {
+        line1__bars.style.backgroundColor = "var(--clr-primary)";
+        line2__bars.style.backgroundColor = "var(--clr-primary)";
+        line3__bars.style.backgroundColor = "var(--clr-primary)";
+      }
       });
     });
 
