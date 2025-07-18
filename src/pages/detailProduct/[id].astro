@@ -24,19 +24,19 @@ const product = PRODUCTOS.find(product => product.id == id)
 <Layout>
     <section>
     
-        <a href="/#nuestrosProductos" class="back"><i class="bi bi-arrow-left"></i></a>
+        <a href="/#nuestrosProductos" class="back"  aria-label="Volver hacia atras"><i class="bi bi-arrow-left"></i></a>
         <h2>{product.title}</h2>
         <div>
-            <img src="/imgs/bg-desktop.webp"  alt="" transition:name={`animation-img-${id}`}>
-            <img src="/imgs/bg-desktop.webp" alt="">
-            <img src="/imgs/bg-desktop.webp" alt="">
+            <img src="/imgs/bg-desktop.webp"  alt="Imagen de ejemplo" transition:name={`animation-img-${id}`}>
+            <img src="/imgs/bg-desktop.webp" alt="Imagen de ejemplo">
+            <img src="/imgs/bg-desktop.webp" alt="Imagen de ejemplo">
         </div>
         <article class="description">
             {product.description.map(parr => {
                 return <p>{parr}</p>;
             })
         }</article>
-        <a href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar presupuesto.")}` target="_blank" class="btn">Solicitar cotización</a>
+        <a href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar cotización.")}` target="_blank"   aria-label="Boton para solicitar cotizacion" class="btn">Solicitar cotización</a>
         
     </section>
 </Layout>
