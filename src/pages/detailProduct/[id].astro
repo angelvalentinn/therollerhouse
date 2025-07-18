@@ -23,32 +23,34 @@ const product = PRODUCTOS.find(product => product.id == id)
 
 <Layout>
     <section>
-    
-        <a href="/#nuestrosProductos" class="back"  aria-label="Volver hacia atras"><i class="bi bi-arrow-left"></i></a>
-        <h2>{product.title}</h2>
-        <div>
-            <img src="/imgs/bg-desktop.webp"  alt="Imagen de ejemplo" transition:name={`animation-img-${id}`}>
-            <img src="/imgs/bg-desktop.webp" alt="Imagen de ejemplo">
-            <img src="/imgs/bg-desktop.webp" alt="Imagen de ejemplo">
-        </div>
-        <article class="description">
-            {product.description.map(parr => {
-                return <p>{parr}</p>;
-            })
-        }</article>
-        <a href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar cotización.")}` target="_blank"   aria-label="Boton para solicitar cotizacion" class="btn">Solicitar cotización</a>
         
+        <div class="content">
+
+            <a href="/#nuestrosProductos" class="back"  aria-label="Volver hacia atras"><i class="bi bi-arrow-left"></i></a>
+            <h2>{product.title}</h2>
+            <div>
+                <img src="/imgs/bg-desktop.webp"  alt="Imagen de ejemplo" transition:name={`animation-img-${id}`}>
+                <img src="/imgs/bg-desktop.webp" alt="Imagen de ejemplo">
+                <img src="/imgs/bg-desktop.webp" alt="Imagen de ejemplo">
+            </div>
+            <article class="description">
+                {product.description.map(parr => {
+                    return <p>{parr}</p>;
+                })
+            }</article>
+            <a href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar cotización.")}` target="_blank"   aria-label="Boton para solicitar cotizacion" class="btn">Solicitar cotización</a>
+        
+        </div>
+
     </section>
 </Layout>
 
 <style>
     section {
         min-height: 100vh;
-        padding-block: 6rem 2rem;
+        padding-block: 6rem 4rem;
         padding-inline: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+
             background-image: linear-gradient(
         0deg,
         rgba(0, 0, 0, 0.5),
@@ -59,125 +61,147 @@ const product = PRODUCTOS.find(product => product.id == id)
         background-position: center;
         background-repeat: no-repeat;
 
-        i {
-            font-size: 2rem;
-            color: var(--clr-primary);
-            cursor: pointer;
-        }
+        .content {
 
-        h2 {
-            font-size: 1.8rem;
-        }
-    
-        div {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: nowrap;
-            overflow: scroll;
+        display: flex;
+        flex-direction: column;
+        
+        gap: 1rem;
 
-            img {
+            i {
+                font-size: 2rem;
+                color: var(--clr-primary);
+                cursor: pointer;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        
+            div {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: nowrap;
+                overflow: scroll;
+
+                img {
+                    border-radius: 22px;
+                    flex: 1 0 auto;
+                                width: 250px;
+                    height: 230px;
+                    border: 2px solid var(--clr-primary);
+                    object-fit: cover;
+                }
+            }
+
+            .description {
+                grid-area: description;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                p {
+                    font-size: 1.1rem;
+                    font-weight: 300;
+                    text-wrap: pretty;
+                    text-align: left;
+                }
+            }
+
+            .btn {
+                background: var(--clr-primary);
+                padding: 0.5rem 1.1rem;
                 border-radius: 22px;
-                flex: 1 0 auto;
-                            width: 250px;
-                height: 230px;
-                border: 2px solid var(--clr-primary);
-                object-fit: cover;
+                width: fit-content;
+                font-weight: 500;
+                transition: background-color 0.3s ease;
+
+                :hover {
+                    background-color: var(--clr-primary-hover);
+                }
             }
+        
         }
 
-        .description {
-            grid-area: description;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-
-            p {
-                font-size: 1.1rem;
-                font-weight: 300;
-                text-wrap: pretty;
-                text-align: left;
-            }
-        }
-
-        .btn {
-            background: var(--clr-primary);
-            padding: 0.5rem 1.1rem;
-            border-radius: 22px;
-            width: fit-content;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-
-            :hover {
-                background-color: var(--clr-primary-hover);
-            }
-        }
     }
 
     @media screen and (width > 750px) {
         section {
-            
-            display: grid;
-            padding-inline: 2rem;
-            grid-template-areas:
-            "back back"
-            "title ."
-            "div description"
-            "div button";
-            grid-template-rows: repeat(4, max-content);
-            grid-template-columns: 1fr 1fr;
 
-            .back {
-                grid-area: back;
-                justify-self: self-start;
-                cursor: pointer;
+            .content {
+                display: grid;
+                      max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+                grid-template-areas:
+                "back back"
+                "title ."
+                "div description"
+                "div button";
+                grid-template-rows: repeat(4, max-content);
+                grid-template-columns: max-content 600px;
 
-                i {
-                    font-size: 2.2rem;
-                }
-            }
+                .back {
+                    grid-area: back;
+                    justify-self: self-start;
+                    cursor: pointer;
 
-            h2 {
-                grid-area: title;
-                font-size: 2.3rem;
-                text-wrap: pretty;
-                justify-self: end;
-
-            }
-
-            div {
-                grid-area: div;
-                width: 400px;
-                height: 300px;
-                overflow: hidden;
-                justify-self: end;
-                align-self: start;
-
-                img {
-                    height: 100%;
-                    width: 100%;
+                    i {
+                        font-size: 2.2rem;
+                    }
                 }
 
+                h2 {
+                    grid-area: title;
+                    font-size: 2.3rem;
+                    text-wrap: pretty;
+                    justify-self: start;
 
-            }
-
-            .btn {
-                grid-area: button;
-                width: fit-content;
-                height: fit-content;
-                font-size: 18px;
-                align-self: flex-end;
-
-                &:hover {
-                    background-color: var(--clr-primary-hover);
                 }
+
+                div {
+                    grid-area: div;
+                    width: 400px;
+                    height: 300px;
+                    overflow: hidden;
+                    
+                    align-self: start;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+
+
+                }
+
+                .description p {
+                    width: 70%;
+                }
+
+                .btn {
+                    grid-area: button;
+                    width: fit-content;
+                    height: fit-content;
+                    font-size: 18px;
+                    align-self: flex-end;
+
+                    &:hover {
+                        background-color: var(--clr-primary-hover);
+                    }
+                }
+
             }
+
         }
     }
 
     @media screen and (width > 1024px) {
 
         section {
-            padding-inline: 5rem;
+                        display: flex;
+            justify-items: center;
+            align-items: center;
         }
 
            
