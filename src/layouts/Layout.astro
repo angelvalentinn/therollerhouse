@@ -49,6 +49,7 @@ import { ClientRouter } from 'astro:transitions';
 			<slot />
 		</main>
 		<Footer />
+		<a href=`https://wa.me/1161439675?text=${encodeURIComponent("")}` target="_blank" aria-label="Whatsapp de The Roller House" class="contactoDirecto"><i class="bi bi-whatsapp"></i></a>
 	</body>
 </html>
 
@@ -66,6 +67,29 @@ import { ClientRouter } from 'astro:transitions';
 		font-family: 'Raleway', sans-serif;
 		background-color: var(--clr-white);
 		margin: 0 auto;
+
+		.contactoDirecto {
+			position:fixed;
+			z-index: 1000;
+			right: 10px;
+			bottom: 10px;
+			display: grid;
+			place-content: center;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: #25d366;
+			transition: background-color .3s ease;
+			box-shadow: 5px 7px 6px rgba(0, 0, 0, 0.413);
+
+			i {
+				font-size: 1.8rem;
+			}
+
+			&:hover {
+				background-color: #23bb5b;
+			}
+		}
 	}
 
 	:root {
@@ -97,18 +121,19 @@ import { ClientRouter } from 'astro:transitions';
 		color: var(--clr-white);
 	}
 
-#baguetteBox-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 9999 !important;
-  display: none;
-}
-#baguetteBox-overlay.active {
-  display: block;
-}
+	#baguetteBox-overlay {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100vw !important;
+	height: 100vh !important;
+	z-index: 9999 !important;
+	display: none;
+	}
+
+	#baguetteBox-overlay.active {
+	display: block;
+	}
 
 </style>
 
