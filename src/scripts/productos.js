@@ -1,5 +1,27 @@
 export const PRODUCTOS = [
-    {id: 1, title: "Blackout Premium", description: ["En The Roller House, nuestras cortinas blackout están diseñadas para bloquear hasta el 99% de la luz exterior, creando un ambiente oscuro y relajante ideal para dormir, ver películas o regular la temperatura en cualquier espacio","Ideal para: Dormitorios, home theaters, guarderías y espacios donde la privacidad y el confort son esenciales."]},
+    {
+        id: 1, 
+        title: "Blackout Premium", 
+        description: [
+            "En The Roller House, nuestras cortinas blackout están diseñadas para bloquear hasta el 99% de la luz exterior, creando un ambiente oscuro y relajante ideal para dormir, ver películas o regular la temperatura en cualquier espacio",
+            // "Ideal para: Dormitorios, home theaters, guarderías y espacios donde la privacidad y el confort son esenciales.",
+            // "Ventajas: Soldable, Apto para impresiones, rotable"
+        ],
+        especifications: [
+            ["Composición:","30% Fibra de vidrio | 70% PVC"],
+            ["Peso por M2:","530 G/M2"],
+            ["Capas:","4"],
+            ["Ancho disponible:","183/2.50"],
+            ["Longitud de rollo:", "30 MTS"]
+        ],
+        colors: [
+            ["Blanco", "/imgs/colores/blackout-premium/blanco.jpeg"],
+            ["Gris", "/imgs/colores/blackout-premium/gris.jpeg"],
+            ["Negro", "/imgs/colores/blackout-premium/negro.jpeg"],
+            ["Beige", "/imgs/colores/blackout-premium/beige.jpeg"]
+        ]
+    },
+
     {id: 2, title: "Screen 5% Nordic", description: ["Diseñadas para ofrecer control de luz y privacidad con un estilo minimalista. Disponibles en tejidos translúcidos, opacos o blackout, se adaptan a cualquier espacio.","Ideal para: Oficinas, hogares, vidrieras","Beneficios: Limpieza sencilla, protección solar, elegancia discreta (sin obstruir la vista exterior)"]},
     {id: 3, title: "Screen Poliéster 3% Nordic", description: ["Controla la luz natural con elegancia: filtra los rayos solares sin oscurecer completamente el ambiente. Tejido técnico que difumina la luminosidad, reduciendo el resplandor y protegiendo tus muebles de los rayos UV, manteniendo una atmósfera acogedora y con privacidad.","Ideal para: Salas de estar, cocinas, oficinas.", "Beneficios clave: Regula la temperatura, estética moderna, luz suave."]},
     {id: 4, title: "Screen 5% Solar Cool", description: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."]},
