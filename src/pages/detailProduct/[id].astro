@@ -58,8 +58,8 @@ const product = PRODUCTOS.find((product) => product.id == id);
           <h2>Colores</h2>
           <div class="gallery">
             <p>{product.colors}</p>
-            <a href={product.gamaColors} data-caption="Image caption"  aria-label="Imagen de la gama de colores">
-              <img src={product.gamaColors} alt={`Gama de colores disponibles de la cortina o toldo ${product.title}`} loading="lazy" decoding="async">
+            <a href={product.gamaColors || "/imgs/colores/blackout-premium.jpeg"} data-caption="Image caption"  aria-label="Imagen de la gama de colores">
+              <img src={product.gamaColors || "/imgs/colores/blackout-premium.jpeg"} alt={`Gama de colores disponibles de la cortina o toldo ${product.title}`} loading="lazy" decoding="async">
             </a>
           </div>
         </article>
@@ -171,12 +171,10 @@ const product = PRODUCTOS.find((product) => product.id == id);
             gap: 1rem;
             height: auto;
             a {
-              width: 150px;
-              height: 100px;
               flex: 1;
               img {
-                width: 100%;
-                height: 100%;
+                width: 120px;
+                height: 200px; 
                 border: none;
                 border-radius: 12px;
               }
@@ -261,12 +259,6 @@ const product = PRODUCTOS.find((product) => product.id == id);
             div {
               height: auto;
               p {
-              }
-
-              a {
-                height: 300px;
-                flex: 0 1 auto;
-                width: 200px;
               }
             }
           }
