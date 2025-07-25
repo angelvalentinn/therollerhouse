@@ -30,7 +30,7 @@ const product = PRODUCTOS.find((product) => product.id == id);
       <h2>{product.title}</h2>
       <div class="images gallery">
           {
-            product.imgs.map((image) => {
+            product.imgs && product.imgs.map((image) => {
               return <a href={image} data-caption="Image caption"  aria-label={`Imagen ilustrativa de la tela ${product.title}`}> 
                       <img src={image} alt={`Imagen ilustrativa de la cortina ${product.title}`}/>
                       </a>
