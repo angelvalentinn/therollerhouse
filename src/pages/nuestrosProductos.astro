@@ -13,7 +13,7 @@ import { PRODUCTOS } from "../scripts/productos.js";
         {
             PRODUCTOS.map(product => {
                 return (
-                    <CardProducto id={product.id} title={product.title} description={product.description} />
+                    <CardProducto id={product.id} title={product.title} description={product.description} image={product.imgs || "/public/imgs/ex.webp"} />
                 )
             })
         }

@@ -2,10 +2,13 @@
   <article>
     <h1>Cortinas y toldos a medida</h1>
     <p>
-      Fabricación e instalación profesional con materiales premium. Personalizá
-      tu espacio con nuestros diseños duraderos.
+      Fabricamos cortinas roller y toldos personalizados, adaptados
+      a tus necesidades y estilo. Con materiales de alta calidad y un amplio
+      catálogo de telas. También ofrecemos colocación profesional. ¡Personalizá tu espacio con nuestros diseños duraderos!
     </p>
-    <a href="#nuestrosProductos" aria-label="Ir a la sección de Productos">Ver productos</a>
+    <a href="#nuestrosProductos" aria-label="Ir a la sección de Productos"
+      >Ver productos</a
+    >
   </article>
 
   <i class="bi bi-chevron-down"></i>
@@ -33,7 +36,6 @@
     background-repeat: no-repeat;
 
     article {
-      
       display: flex;
       flex-direction: column;
       gap: 1.3rem;
@@ -68,13 +70,11 @@
       transform: translateX(-50%);
       animation: moverFlecha 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
     }
-
   }
- 
+
   @media screen and (width > 750px) {
     #inicio {
-
-            padding-inline: 4rem;
+      padding-inline: 4rem;
       background-image: linear-gradient(
           0deg,
           rgba(0, 0, 0, 0.5),
@@ -82,33 +82,31 @@
         ),
         url(../../public/imgs/bg-desktop.webp);
 
-        article {
-            align-items:flex-start;
+      article {
+        align-items: flex-start;
 
-            h1 {
-                font-size: 3rem;
-            }
-
-            p {
-                text-wrap:pretty;
-                font-size: 1.2rem;
-                width: 40%;
-                text-align: left;
-            }
-
-            a {
-                transition: .3s background-color ease;
-                &:hover {
-                    background-color:var(--clr-primary-hover);
-                }
-            }
+        h1 {
+          font-size: 3rem;
         }
+
+        p {
+          text-wrap: pretty;
+          width: 40%;
+          text-align: left;
+        }
+
+        a {
+          transition: 0.3s background-color ease;
+          &:hover {
+            background-color: var(--clr-primary-hover);
+          }
+        }
+      }
 
       i {
         bottom: 10px;
         left: 50%;
       }
-
     }
   }
 

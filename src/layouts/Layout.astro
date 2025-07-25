@@ -10,7 +10,7 @@ import { ClientRouter } from 'astro:transitions';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="robots" content="noindex, nofollow"> <!-- cambiar a index, follow cuando quiero que se indexe -->
+		<meta name="robots" content="index, follow"> <!-- cambiar a index, follow cuando quiero que se indexe -->
 
 		<link rel="canonical" href="https://therollerhouse.netlify.app/">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,6 +119,10 @@ import { ClientRouter } from 'astro:transitions';
 	p,h1,h2,h3,button,a,i,span {
 		opacity: .9;
 		color: var(--clr-white);
+	}
+
+	a, button {
+		opacity: 1;
 	}
 
 	#baguetteBox-overlay {
