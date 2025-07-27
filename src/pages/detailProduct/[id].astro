@@ -32,7 +32,7 @@ const product = PRODUCTOS.find((product) => product.id == id);
           {
             product.imgs && product.imgs.map((image) => {
               return <a href={image} data-caption="Image caption"  aria-label={`Imagen ilustrativa de la tela ${product.title}`}> 
-                      <img src={image} alt={`Imagen ilustrativa de la cortina ${product.title}`}/>
+                      <img src={image} alt={`Imagen ilustrativa de la cortina ${product.title}`} transition:name={`animation-img-${product.id}`} />
                       </a>
             })
           }
@@ -63,14 +63,14 @@ const product = PRODUCTOS.find((product) => product.id == id);
             </a>
           </div>
         </article>
+        <a
+          href=`https://wa.me/1161439675?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar cotización.")}`
+          target="_blank"
+          aria-label="Boton para solicitar cotizacion"
+          class="btn">Solicitar cotización</a
+        >
       </div>
 
-      <a
-        href=`https://wa.me/1165075228?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar cotización.")}`
-        target="_blank"
-        aria-label="Boton para solicitar cotizacion"
-        class="btn">Solicitar cotización</a
-      >
     </div>
   </section>
 </Layout>
@@ -118,9 +118,13 @@ const product = PRODUCTOS.find((product) => product.id == id);
           img {
             border-radius: 22px;
             width: 100%;
-            height: 350px;
+            height: 290px;
             border: 2px solid var(--clr-primary);
             object-fit: cover;
+            transition: filter .3s ease;
+            &:hover {
+              filter: brightness(1.1);
+            }
           }
         }
       }
@@ -174,7 +178,7 @@ const product = PRODUCTOS.find((product) => product.id == id);
               img {
                 width: 120px;
                 height: 200px; 
-                border: none;
+                
                 border-radius: 12px;
               }
             }
@@ -190,7 +194,8 @@ const product = PRODUCTOS.find((product) => product.id == id);
       }
 
       .btn {
-        background: var(--clr-primary);
+        background-color: var(--clr-primary-bold);
+
         padding: 0.5rem 1.1rem;
         border-radius: 22px;
         width: fit-content;
@@ -202,6 +207,16 @@ const product = PRODUCTOS.find((product) => product.id == id);
           background-color: var(--clr-primary-hover);
         }
       }
+    }
+
+    .back {
+      border: 2px solid var(--clr-primary-bold);
+      width: max-content;
+      border-radius: 50%;
+      height: 45px;
+      width: 45px;
+      display: grid;
+      place-content: center;
     }
   }
 
@@ -223,8 +238,16 @@ const product = PRODUCTOS.find((product) => product.id == id);
         .back {
           grid-area: back;
           justify-self: self-start;
-          cursor: pointer;
+          border: 2px solid var(--clr-primary-bold);
+          transition: all  .3s ease;
 
+          &:hover {
+            background-color: var(--clr-primary-bold);
+
+            i {
+              color: var(--clr-white);
+            }
+          }
           i {
             font-size: 2.2rem;
           }
@@ -241,7 +264,7 @@ const product = PRODUCTOS.find((product) => product.id == id);
           grid-area: detalle-contenido;
           width: 100%;
           height: 100%;
-
+          position: relative;
           .ideal {
             .ideal-content {
               height: auto;
@@ -257,7 +280,18 @@ const product = PRODUCTOS.find((product) => product.id == id);
             
             div {
               height: auto;
+              flex-direction: row;
+              gap: 1rem;
+              align-items: flex-start;
+              width: 90%;
               p {
+              }
+
+              a {
+                img {
+                  width: 140px;
+                  height: 150px;
+                }
               }
             }
           }
@@ -266,7 +300,7 @@ const product = PRODUCTOS.find((product) => product.id == id);
         div {
           grid-area: div;
           width: 400px;
-          height: 400px;
+          height: 320px;
           overflow: hidden;
 
           align-self: start;
@@ -281,12 +315,15 @@ const product = PRODUCTOS.find((product) => product.id == id);
         }
 
         .btn {
+          position: absolute;
+          bottom: 0px;
+          left: 0;
           grid-area: button;
           width: fit-content;
           height: fit-content;
           font-size: 18px;
           align-self: flex-end;
-
+        
           &:hover {
             background-color: var(--clr-primary-hover);
           }
