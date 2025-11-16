@@ -161,100 +161,47 @@ import ArrowRight from "../components/arrowRight.svg";
 
 <script>
 
-  document.addEventListener('astro:page-load', () => {
-    if (typeof window === 'undefined') return;
+    document.addEventListener('astro:page-load', () => {    
 
-    const carrousel = document.getElementById('gallery');
-    const leftBtn = document.getElementById('leftBtnTrabajos');
-    const rightBtn = document.getElementById('rightBtnTrabajos');
-    let currentTranslate = 0; // desplazamiento en px
+        if (typeof window !== "undefined") {
+            const carrousel = document.getElementById('gallery');
+            const leftBtn = document.getElementById('leftBtnTrabajos');
+            const rightBtn = document.getElementById('rightBtnTrabajos');
+            let currentIndex = 0;
 
-    const isDesktop = () => window.matchMedia('(min-width: 751px)').matches;
+            function getCardWidth() {
+                
+                const card = carrousel.querySelector('.trabajo-img');
+                
+                return card ? card.offsetWidth + 16 : 300; // 16px gap
 
-    function getGapPx() {
-      const gapStr = getComputedStyle(carrousel).gap || '16px';
-      const n = parseFloat(gapStr);
-      return Number.isFinite(n) ? n : 16;
-    }
+            }
 
-    function getCardWidth() {
-      const card = carrousel.querySelector('.trabajo-img');
-      const gap = getGapPx();
-      return card ? Math.round(card.getBoundingClientRect().width + gap) : 300;
-    }
+            function updateTransform() {
+                const cardWidth = getCardWidth();
+                carrousel.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            }
 
-    function getVisibleWidth() {
-      // Ancho del contenedor visible (la .content envuelve el carrusel)
-      const parent = carrousel.parentElement || carrousel;
-      return parent.clientWidth;
-    }
+            function scrollCarrousel(direction) {
+                if (!carrousel) return;
+                const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
+                const maxIndex = totalCards - 1;
+                currentIndex += direction * 2;
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex - 3) currentIndex = maxIndex - 3;
+                updateTransform();
+            }
 
-    function getTotalColumns(totalCards) {
-      const rows = isDesktop() ? 2 : 1;
-      return Math.ceil(totalCards / rows);
-    }
+            if (leftBtn && rightBtn) {
+                leftBtn.onclick = () => scrollCarrousel(-1);
+                rightBtn.onclick = () => scrollCarrousel(1);
+            }
 
-    function getMaxTranslate(totalCards, cardWidth, visibleWidth) {
-      const totalColumns = getTotalColumns(totalCards);
-      const totalContentWidth = totalColumns * cardWidth;
-      return Math.max(0, totalContentWidth - visibleWidth);
-    }
+            // Actualiza el transform si cambia el tamaño de la ventana
+            window.addEventListener('resize', updateTransform);
+        }
 
-    function updateTransform() {
-      if (isDesktop()) {
-        carrousel.style.transform = `translateX(${-currentTranslate}px)`;
-      } else {
-        // En mobile no usamos transform (se hace scroll nativo)
-        carrousel.style.transform = '';
-      }
-    }
-
-    function updateButtons() {
-      if (!leftBtn || !rightBtn) return;
-      const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
-      const cardWidth = getCardWidth();
-      const visibleWidth = getVisibleWidth();
-      const maxTranslate = getMaxTranslate(totalCards, cardWidth, visibleWidth);
-
-      if (currentTranslate <= 0) leftBtn.setAttribute('disabled', ''); else leftBtn.removeAttribute('disabled');
-      if (currentTranslate >= maxTranslate) rightBtn.setAttribute('disabled', ''); else rightBtn.removeAttribute('disabled');
-    }
-
-    function scrollCarrousel(direction) {
-      const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
-      const cardWidth = getCardWidth();
-      const visibleWidth = getVisibleWidth();
-      const maxTranslate = getMaxTranslate(totalCards, cardWidth, visibleWidth);
-      const step = (isDesktop() ? 2 : 1) * cardWidth; // desktop: 2 columnas; mobile: 1 tarjeta
-
-      currentTranslate = Math.min(Math.max(0, currentTranslate + direction * step), maxTranslate);
-      updateTransform();
-      updateButtons();
-    }
-
-    if (leftBtn && rightBtn) {
-      leftBtn.addEventListener('click', () => scrollCarrousel(-1));
-      rightBtn.addEventListener('click', () => scrollCarrousel(1));
-    }
-
-    window.addEventListener('resize', () => {
-      // al redimensionar, recalculamos el límite y clamp
-      const totalCards = carrousel.querySelectorAll('.trabajo-img').length;
-      const cardWidth = getCardWidth();
-      const visibleWidth = getVisibleWidth();
-      const maxTranslate = getMaxTranslate(totalCards, cardWidth, visibleWidth);
-      currentTranslate = Math.min(currentTranslate, maxTranslate);
-      updateTransform();
-      updateButtons();
     });
-
-    // Setup inicial tras breve delay (por si las imágenes aún calculan tamaño)
-    setTimeout(() => {
-      currentTranslate = 0;
-      updateTransform();
-      updateButtons();
-    }, 50);
-  });
 
 </script>
 <script>
