@@ -23,8 +23,18 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/screen5nordic.webp"]
     },
 
+    {   
+        id: 3, 
+        title: "Sistema Doble",
+        description: [`La cortina Sistema Doble combina dos rollers en un mismo soporte para brindarte lo mejor de ambos mundos: iluminación filtrada + oscuridad total cuando la necesiten.`],
+        ideal: ["Dormitorios, Living, Comedor, Oficinas y estudios"],
+        colors: ["Los disponibles en Blackout & Sunscreen"],
+        gamaColors: "/imgs/colores/screen5Nordic.webp",
+        imgs: ["/imgs/telas/sistemadoble.webp"]
+    },
+
     {
-        id: 3,
+        id: 4,
         title: "Screen Poliéster 3% Nordic",
         description: ["Confeccionada en tejido de poliéster con apertura del 3%, permite paso controlado de luz natural mientras preserva la privacidad y protege contra los rayos UV. "],
         ideal: ["Oficinas con pantalla, Salas de estar luminosas, Cocinas y dormitorios"],
@@ -33,7 +43,7 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/screen3poliester-nordic.webp"]
     },
 
-    {   id: 4,
+    {   id: 5,
         title: "Screen 5% Solar Cool",
         description: ["Ofrece un equilibrio ideal entre visibilidad exterior y protección solar. Con una apertura del 5%, permite el paso de luz natural sin perder privacidad, reduciendo el deslumbramiento y el calor en ambientes interiores."],
         ideal: ["Livings, Oficinas modernas, Comedores y espacios con buena luz natural"],
@@ -42,7 +52,7 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/screen5solarcool.webp"]
     },
 
-    {   id: 5,
+    {   id: 6,
         title: "Screen 5% Poli",
         description: ["Brinda una iluminación natural suave y permite ver hacia el exterior gracias a su apertura del 5%. Fabricada en tejido de poliéster resistente, ofrece protección solar, privacidad y confort visual."],
         ideal: ["Oficinas, livings, Cocinas o espacios de trabajo donde se desea luz natural sin deslumbramiento"],
@@ -51,7 +61,7 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/screen5poli.webp"]
     },
 
-    {   id: 6,
+    {   id: 7,
         title: "Punteado Gaspeado",
         description: ["Cortina roller fabricada en tela punteado gaspeado, un tejido semitransparente con textura de puntos que filtra la luz creando un ambiente luminoso y con privacidad."],
         ideal: ["Salas y comedores, Oficinas y locales comerciales modernos, Dormitorios, Espacios de día"],
@@ -60,7 +70,7 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/punteado-gaspeado.webp"]
     },
 
-    {   id: 7, 
+    {   id: 8, 
         title: "Texturado Lino 7%", 
         description: ["Cortina roller en tejido tipo lino texturizado con 7% de apertura. Ofrece un equilibrio perfecto entre luz natural y privacidad, con un aspecto rústico-moderno."],
         ideal: ["Casas de campo o decoración nórdica, Cocinas y baños, Espacios de Trabajo modernos"],
@@ -69,7 +79,7 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/texturadolino7.webp"]
     },
 
-    {   id: 8, 
+    {   id: 9, 
         title: "Sun Screen Gaspeado Premium 5%", 
         description: ["Cortina roller de alta gama en tela Sun Screen con tratamiento gaspeado premium (5% de apertura). Ofrece máxima protección solar manteniendo visibilidad hacia el exterior."],
         ideal: ["Ventanales grandes, Oficinas modernas, Climas Cálidos"],
@@ -78,12 +88,20 @@ export const PRODUCTOS = [
         imgs: ["/imgs/telas/screenGaspeadoPremium5.webp"]
     },
 
-    {   id: 9, 
+    {   id: 10, 
         title: "Sun Screen Premium texturado", 
         description: ["Combina protección solar eficiente con un acabado texturado de alta gama que aporta elegancia y estilo. Su tejido técnico permite el paso controlado de luz, mantiene la vista al exterior y reduce el calor y el deslumbramiento"],
         ideal: ["Salas de estar, Oficinas modernas, livings, espacios comerciales"],
         gamaColors: "/imgs/colores/screenPremiumTexturado.webp",
         colors: ["Blanco | Blanco Beige | Negro Gris"],
         imgs: ["/imgs/telas/screenPremiumTexturado.webp"]
+    }, 
+    {   id: 11, 
+        title: "Toldos", 
+        description: ["Nuestros toldos roller están diseñados para brindarte protección solar, privacidad y confort en espacios exteriores, combinando funcionalidad con un estilo moderno y minimalista. Fabricados con materiales de alta resistencia, soportan el sol, el viento y la humedad, manteniendo su color y firmeza con el paso del tiempo."],
+        ideal: ["Patios, Balcones, Terrazas, Frentes comerciales y Quinchos"],
+        gamaColors: "/imgs/colores/blackoutPremium.webp",
+        colors: ["Disponible en Blanco unicamente"],
+        imgs: ["/imgs/telas/toldo.webp"]
     }, 
 ]
