@@ -8,7 +8,7 @@
                 <i class="bi bi-telephone-inbound"></i>
                 <p>11 2874-4142</p>
             </a>
-            <a href=`https://wa.me/+5491128744142?text=${encodeURIComponent("")}` target="_blank" aria-label="Whatsapp de The Roller House">
+            <a href=`https://wa.me/+5491128744142?text=${encodeURIComponent("")}` class="btnWhatsapp"  target="_blank" aria-label="Whatsapp de The Roller House">
                 <i class="bi bi-whatsapp"></i>
                 <p>11 2874-4142</p>
             </a>
@@ -81,3 +81,16 @@
         }
     }
 </style>
+
+<script>
+    //Añado un tracking de meta al boton de contacto
+const contactoDirecto = document.querySelector('.btnWhatsapp');
+
+    contactoDirecto.addEventListener("click", function () {
+
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+            window.fbq('track', 'Contact');
+        }
+        
+    });
+</script>

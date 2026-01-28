@@ -39,7 +39,7 @@ import { ClientRouter } from 'astro:transitions';
 		<!-- Meta Tags Generated with https://metatags.io -->
 
 		<link rel="icon" type="image" href="/imgs/logo2.png" />
-		
+
 		<!-- Meta Pixel Code -->
 		<script>
 		!function(f,b,e,v,n,t,s)
@@ -208,5 +208,15 @@ const lenis = new Lenis({
 lenis.on('scroll', (e) => {
   
 });
+
+//Añado un tracking de meta al boton de contacto
+const contactoDirecto = document.querySelector('.contactoDirecto');
+
+    contactoDirecto.addEventListener("click", function () {
+    
+		if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+  			window.fbq('track', 'Contact');
+		}
+    });
 
 </script>

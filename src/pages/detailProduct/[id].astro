@@ -69,7 +69,7 @@ const product = PRODUCTOS.find((product) => product.id == id);
           href=`https://wa.me/+5491128744142?text=${encodeURIComponent("Hola! Estoy interesado en ")} ${encodeURIComponent(product.title)} ${encodeURIComponent(" , quisiera solicitar cotización.")}`
           target="_blank"
           aria-label="Boton para solicitar cotizacion"
-          class="btn">Solicitar cotización</a
+          class="btn btnWhatsapp">Solicitar cotización</a
         >
       </div>
 
@@ -356,4 +356,15 @@ const product = PRODUCTOS.find((product) => product.id == id);
         });
         
     });
+
+    const btnWhatsapp = document.querySelector('.btnWhatsapp');
+
+    btnWhatsapp.addEventListener("click", function () {
+      
+      if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+        window.fbq('track', 'Contact');
+      }
+    
+    })
+    
 </script>
